@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Cost Algorithm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#003b64]">
+    
+    <div class="h-screen grid grid-cols-2 place-items-center text-[#ebdee1]">
+        
+        <div class="flex flex-col items-center">
+            <h2 class="text-center font-bold text-2xl">Meal Cost Algorithm</h2>
+            <label>Enter meal cost: $</label>
+            <input  id="mealCost" class="bg-[#007c81] rounded-full outline-none text-center" type="number">
+            <button onclick="calcBill()" class="hover:text-[#abe1e3]">Calculate</button>
+        </div>
+
+        <div class="flex flex-col items-start">
+            <h3 class="text-[#abe1e3]">Results:</h3>
+            <p id="net"></p>
+            <p id="tax"></p>
+            <p id="tip"></p>
+            <p id="total" class="font-semibold text-[#55a8ac]"></p>
+        </div>
+    </div>
+    
+    <script>
+        function calcBill() {
+            let mealCost = parseFloat(document.getElementById("mealCost").value);
+
+            let tax = mealCost * 0.07;
+            let tip = mealCost * 0.15;
+            let total = mealCost + tax + tip;
+
+            document.getElementById("net").innerText = "Net Amount (excluding tax): $" + mealCost.toFixed(2);
+            document.getElementById("tax").innerText = "Tax (7%): $" + tax.toFixed(2);
+            document.getElementById("tip").innerText = "Tip (15%): $" + tip.toFixed(2);
+            document.getElementById("total").innerText = "Total Amount: $" + total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
